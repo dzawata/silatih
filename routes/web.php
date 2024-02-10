@@ -110,6 +110,8 @@ Route::group(['middleware' => ['auth:sanctum', 'cekrole:1|2']], function () {
 
         Route::get('/display', 'TenagakerjaController@display');
         Route::post('/add', 'TenagakerjaController@add')->name('tenagakerja.add');
+        Route::get('/edit/{id}', 'TenagakerjaController@edit')->name('tenagakerja.edit');
+        Route::get('/delete/{id}', 'TenagakerjaController@delete')->name('tenagakerja.delete');
     });
 
     Route::group(['prefix' => 'rekomendasi', 'middleware' => ['auth:sanctum', 'cekrole:1']], function () {
