@@ -9,12 +9,12 @@
                     <div class="invoice p-3 mb-1">
                         <div class="row">
                             <div class="col-sm-6">
-                                <p>Data Sampel</p>
+                                <p>Data Tenaga Kerja</p>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="{{ URL::to('/dashboard')}}">Data Training</a></li>
-                                    <li class="breadcrumb-item active">Data Sampel</li>
+                                    <li class="breadcrumb-item"><a href="{{ URL::to('/dashboard')}}">Data Testing</a></li>
+                                    <li class="breadcrumb-item active">Data Tenaga Kerja</li>
                                 </ol>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form action="{{ route('sample.update') }}" method="post">
+                                    <form action="{{ route('tenagakerja.update') }}" method="post">
                                         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                         <input type="hidden" name="id" value="{{ $data->id }}">
                                         <div class="form-group">
@@ -166,21 +166,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="jenis">Jenis Pelatihan</label>
-                                            <select name="jenis" class="form-control @error(" jenis") is-invalid @enderror">
-                                                @foreach ($jenis_data as $jenis_data)
-                                                <option value="{{$jenis_data->id_jenis}}" @if ($data->id_jenis ==$jenis_data->id_jenis) selected @endif>{{$jenis_data->jenis}}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('jenis')
-                                            <small class="text-danger">
-                                                {{ $message }}
-                                            </small>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="tingkat">Tingkat</label>
+                                            <label for="tingkat">Tingkat Pendidikan</label>
                                             <select name="tingkat" class="form-control @error(" tingkat") is-invalid @enderror">
                                                 @foreach ($tingkat_data as $tingkat_data)
                                                 <option value="{{$tingkat_data->id_tingkat}}" @if ($data->id_tingkat ==$tingkat_data->id_tingkat) selected @endif>{{$tingkat_data->tingkat}}</option>
@@ -220,22 +206,8 @@
                                             </small>
                                             @enderror
                                         </div>
-
-                                        <div class="form-group">
-                                            <label for="pelatihan">Pelatihan</label>
-                                            <select name="pelatihan" class="form-control @error(" pelatihan") is-invalid @enderror">
-                                                @foreach ($pelatihan_data as $item)
-                                                <option value="{{$item->id_pelatihan}}" @if ($data->id_pelatihan==$item->id_pelatihan) selected @endif>{{$item->pelatihan}}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('pelatihan')
-                                            <small class="text-danger">
-                                                {{ $message }}
-                                            </small>
-                                            @enderror
-                                        </div>
                                 </div>
-                                <a type="button" href="{{ route('sample.display') }}" class="btn btn-danger">Kembali</a>&nbsp;
+                                <a type="button" href="{{ route('tenagakerja.display') }}" class="btn btn-danger">Kembali</a>&nbsp;
                                 <input type="submit" class="btn btn-success" id="submit" value="Simpan">
                                 </form>
                             </div>

@@ -108,9 +108,10 @@ Route::group(['middleware' => ['auth:sanctum', 'cekrole:1|2']], function () {
 
     Route::group(['prefix' => 'tenagakerja', 'middleware' => ['auth:sanctum', 'cekrole:1']], function () {
 
-        Route::get('/display', 'TenagakerjaController@display');
+        Route::get('/display', 'TenagakerjaController@display')->name('tenagakerja.display');
         Route::post('/add', 'TenagakerjaController@add')->name('tenagakerja.add');
         Route::get('/edit/{id}', 'TenagakerjaController@edit')->name('tenagakerja.edit');
+        Route::post('/update', 'TenagakerjaController@update')->name('tenagakerja.update');
         Route::get('/delete/{id}', 'TenagakerjaController@delete')->name('tenagakerja.delete');
     });
 

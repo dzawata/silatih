@@ -13,7 +13,7 @@
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="{{ URL::to('/dashboard')}}">Data Master</a></li>
+                  <li class="breadcrumb-item"><a href="{{ URL::to('/dashboard')}}">Data Testing</a></li>
                   <li class="breadcrumb-item active">{{$result['judul']}}</li>
                 </ol>
               </div>
@@ -158,7 +158,6 @@
             </div>
             <div class="card-footer">
               {{$result['tenagakerjadata']->appends(request()->input())->links()}}
-
             </div>
 
           </div>
@@ -298,103 +297,6 @@
       </div>
     </div>
   </div>
-
-  @foreach ($result['tenagakerjadata'] as $tenagakerjadata)
-
-  <div class="modal fade" id="modalEdit{{$tenagakerjadata->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <center>
-            <h3 class="modal-title" id="exampleModalLabel">Edit Pengguna</h3>
-          </center>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="{{ route('user.edit') }}" method="post">
-            <input type="hidden" name="id" value="{{$tenagakerjadata->id}}">
-            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-            <div class="form-group">
-              <label for="nama{{$tenagakerjadata->id}}">Nama Lengkap</label>
-              <input type="text" name="nama{{$tenagakerjadata->id}}" id="nama{{$tenagakerjadata->id}}" value="@if(!empty(old('name'.$tenagakerjadata->id))) {{old('nama'.$tenagakerjadata->id)}}@else {{$tenagakerjadata->name}}@endif" class="form-control @error(" nama".$tenagakerjadata->id) is-invalid @enderror" placeholder="Nama Lengkap">
-              @error('nama'.$tenagakerjadata->id)
-              <small class="text-danger">
-                {{ $message }}
-              </small>
-              @enderror
-            </div>
-
-            <div class="form-group">
-              <label for="email{{$tenagakerjadata->id}}">Email</label>
-              <input type="email" name="email{{$tenagakerjadata->id}}" id="email{{$tenagakerjadata->id}}" value="@if(!empty(old('email'.$tenagakerjadata->id))){{ old('email'.$tenagakerjadata->id) }} @else {{$tenagakerjadata->email}}@endif" class="form-control @error(" email".$tenagakerjadata->id) is-invalid @enderror" placeholder="Email" autocomplete="off">
-              @error('email'.$tenagakerjadata->id)
-              <small class="text-danger">
-                {{ $message }}
-              </small>
-              @enderror
-            </div>
-
-            <div class="form-group">
-              <label for="password1_{{$tenagakerjadata->id}}">Password</label>
-              <input type="password" name="password1_{{$tenagakerjadata->id}}" value="@if(!empty(old('password1_'.$tenagakerjadata->id))) {{ old('password1_'.$tenagakerjadata->id)}} @endif" id="password1_{{$tenagakerjadata->id}}" class="form-control @error(" password1_".$tenagakerjadata->id) is-invalid @enderror" placeholder="Password">
-              @error('password1_'.$tenagakerjadata->id)
-              <small class="text-danger">
-                {{ $message }}
-              </small>
-              @enderror
-            </div>
-            <div class="form-group">
-              <label for="password2_{{$tenagakerjadata->id}}">Verifikasi Password</label>
-              <input type="password" name="password2_{{$tenagakerjadata->id}}" value="{{ old('password2_'.$tenagakerjadata->id)}}" id="password2" class="form-control @error(" password2_".$tenagakerjadata->id) is-invalid @enderror" placeholder="Verifikasi Password">
-              @error('password2_'.$tenagakerjadata->id)
-              <small class="text-danger">
-                {{ $message }}
-              </small>
-              @enderror
-            </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-          <input type="submit" class="btn btn-success" id="submit" value="Simpan">
-          </form>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modalHapus{{$tenagakerjadata->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <center>
-            <h3 class="modal-title" id="exampleModalLabel">Edit Pengguna</h3>
-          </center>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="{{ route('user.hapus') }}" method="post">
-            <input type="hidden" name="id" value="{{$tenagakerjadata->id}}">
-            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-
-            <p>Apakah anda yakin ingin menghapus data <b>{{$tenagakerjadata->name}}</b>?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-          <input type="submit" class="btn btn-danger" id="submit" value="Hapus">
-          </form>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  @endforeach
 
   <!-- /.content -->
 
