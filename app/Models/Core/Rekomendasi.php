@@ -26,7 +26,7 @@ class Rekomendasi extends Model
             ->Join('jurusan', 'jurusan.id_jurusan', '=', 'tenagakerja.id_jurusan')
             ->Join('kelompok', 'kelompok.id_kelompok', '=', 'tenagakerja.id_kelompok')
             ->sortable()
-            ->orderBy('rekomendasi.id')
+            ->orderBy('rekomendasi.id', 'desc')
             ->paginate(10);
 
         return $rekomendasi;
