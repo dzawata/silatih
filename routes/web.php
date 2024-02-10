@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth:sanctum', 'cekrole:1|2']], function () {
         Route::post('/add', 'SampleController@add')->name('sample.add');
         Route::get('/edit/{id}', 'SampleController@edit')->name('sample.edit');
         Route::post('/update', 'SampleController@update')->name('sample.update');
-        Route::post('/hapus', 'SampleController@hapus')->name('sample.hapus');
+        Route::get('/delete/{id}', 'SampleController@delete')->name('sample.delete');
     });
 
 

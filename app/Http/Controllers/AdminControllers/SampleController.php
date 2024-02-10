@@ -165,13 +165,16 @@ class SampleController extends Controller
         }
     }
 
-    public function hapus(Request $request)
+    public function delete($id)
     {
-        // $hapus = $this->user->hapus($request->id);
-        // if ($hapus) {
-        //     return redirect()->back()->with('delete', 'success');
-        // } else {
-        //     return redirect()->back()->with('delete', 'failed');
-        // }
+        $hapus = DB::table('sample')
+            ->where('id', $id)
+            ->delete();
+
+        if ($hapus) {
+            return redirect()->back()->with('delete', 'success');
+        } else {
+            return redirect()->back()->with('delete', 'failed');
+        }
     }
 }
