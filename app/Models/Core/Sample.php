@@ -25,7 +25,7 @@ class Sample extends Model
             ->Join('kelompok', 'kelompok.id_kelompok', '=', 'sample.id_kelompok')
             ->Join('pelatihan', 'pelatihan.id_pelatihan', '=', 'sample.id_pelatihan')
             ->sortable()
-            ->orderBy('id')
+            ->orderBy('id', 'desc')
             ->paginate(10);
 
         return $sample;
@@ -60,22 +60,24 @@ class Sample extends Model
 
     public function insert($data)
     {
-        $nik       = ucfirst($data['nik']);
-        $nama       = ucfirst($data['nama']);
-        $email      = strtolower($data['email']);
-        $kelamin      = strtolower($data['kelamin']);
-        $alamat      = strtolower($data['alamat']);
+        $nik       = strtoupper($data['nik']);
+        $nama       = strtoupper($data['nama']);
+        $email      = $data['email'];
+        $kelamin      = strtoupper($data['kelamin']);
+        $alamat      = strtoupper($data['alamat']);
 
         $in =    DB::table('sample')->insert([
-            'nik'          => $nik,
+            'nik'           => $nik,
             'nama'          => $nama,
-            'jenis_kelamin'          => $kelamin,
+            'jenis_kelamin' => $kelamin,
             'email'         => $email,
-            'alamat'         => $alamat,
-            'hp'         => $data['hp'],
-            'id_jenis'          => $data['jenis'],
-            'id_jurusan'          => $data['jurusan'],
-            'id_kelompok'          => $data['kelompok']
+            'alamat'        => $alamat,
+            'hp'            => $data['hp'],
+            'id_tingkat'    => $data['tingkat'],
+            'id_jenis'      => $data['jenis'],
+            'id_jurusan'    => $data['jurusan'],
+            'id_kelompok'   => $data['kelompok'],
+            'id_pelatihan'  => $data['pelatihan'],
         ]);
         return $in;
     }

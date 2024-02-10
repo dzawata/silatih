@@ -93,9 +93,10 @@ Route::group(['middleware' => ['auth:sanctum', 'cekrole:1|2']], function () {
 
     Route::group(['prefix' => 'sample', 'middleware' => ['auth:sanctum', 'cekrole:1']], function () {
 
-        Route::get('/display', 'SampleController@display');
+        Route::get('/display', 'SampleController@display')->name('sample.display');
         Route::post('/add', 'SampleController@add')->name('sample.add');
-        Route::post('/edit', 'SampleController@edit')->name('sample.edit');
+        Route::get('/edit/{id}', 'SampleController@edit')->name('sample.edit');
+        Route::post('/update', 'SampleController@update')->name('sample.update');
         Route::post('/hapus', 'SampleController@hapus')->name('sample.hapus');
     });
 
@@ -121,9 +122,5 @@ Route::group(['middleware' => ['auth:sanctum', 'cekrole:1|2']], function () {
     Route::prefix('/laporan')->group(function () {
         Route::get('/display', 'LaporanController@display');
         Route::post('/rekomendasi', 'LaporanController@rekomendasi')->name('laporan.rekomendasi');
-    });  
-
-
+    });
 });
-
-
