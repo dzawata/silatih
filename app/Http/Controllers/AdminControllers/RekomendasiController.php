@@ -244,6 +244,8 @@ class RekomendasiController extends Controller
                 $probabilitas['kategori'][$key0][$key1]['nilai_prob'] = $probabilitas['kategori'][$key0][$key1]['xkemunculan'] / count($sample);
             }
         }
+
+            
         dd($probabilitas);
     }
 }

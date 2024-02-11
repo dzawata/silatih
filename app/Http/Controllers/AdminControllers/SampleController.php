@@ -85,61 +85,61 @@ class SampleController extends Controller
 
     public function edit(Request $request)
     {
-        $data = $request->all();
-        $pw1 = $data['password1_'.$data['id']];
-        $pw2 = $data['password2_'.$data['id']];
+    //     $data = $request->all();
+    //     $pw1 = $data['password1_'.$data['id']];
+    //     $pw2 = $data['password2_'.$data['id']];
 
-        if(empty($pw1) and empty($pw2)){
-            $with_password = FALSE;
+    //     if(empty($pw1) and empty($pw2)){
+    //         $with_password = FALSE;
 
-            $messages = [
-                'nama'.$data['id'].'.required' => 'Nama harus diisi.',     
-                'nama'.$data['id'].'.max' => 'Nama tidak boleh lebih dari 50 karakter.',     
-                'email'.$data['id'].'.required' => 'Email harus diisi.',
-                'email'.$data['id'].'.unique' => 'Email sudah digunakan.',
-                'email'.$data['id'].'.email' => 'Email tidak valid.',
+    //         $messages = [
+    //             'nama'.$data['id'].'.required' => 'Nama harus diisi.',     
+    //             'nama'.$data['id'].'.max' => 'Nama tidak boleh lebih dari 50 karakter.',     
+    //             'email'.$data['id'].'.required' => 'Email harus diisi.',
+    //             'email'.$data['id'].'.unique' => 'Email sudah digunakan.',
+    //             'email'.$data['id'].'.email' => 'Email tidak valid.',
              
-            ];
+    //         ];
     
-            $validator = Validator::make($data, [
-                'nama'.$data['id']          => 'required|max:50',
-                'email'.$data['id']         => 'required|unique:users,email,'.$data['email'.$data['id']].',email',
-            ], $messages); 
+    //         $validator = Validator::make($data, [
+    //             'nama'.$data['id']          => 'required|max:50',
+    //             'email'.$data['id']         => 'required|unique:users,email,'.$data['email'.$data['id']].',email',
+    //         ], $messages); 
 
-        } else {
-            $with_password = true;
-            $messages = [
-                'nama'.$data['id'].'.required' => 'Nama harus diisi.',     
-                'nama'.$data['id'].'.max' => 'Nama tidak boleh lebih dari 50 karakter.',     
-                'email'.$data['id'].'.required' => 'Email harus diisi.',
-                'email'.$data['id'].'.unique' => 'Email sudah digunakan.',
-                'email'.$data['id'].'.email' => 'Email tidak valid.',
+    //     } else {
+    //         $with_password = true;
+    //         $messages = [
+    //             'nama'.$data['id'].'.required' => 'Nama harus diisi.',     
+    //             'nama'.$data['id'].'.max' => 'Nama tidak boleh lebih dari 50 karakter.',     
+    //             'email'.$data['id'].'.required' => 'Email harus diisi.',
+    //             'email'.$data['id'].'.unique' => 'Email sudah digunakan.',
+    //             'email'.$data['id'].'.email' => 'Email tidak valid.',
               
-                'password1_'.$data['id'].'.required' => 'Password harus diisi.',
-                'password2_'.$data['id'].'.required' => 'Verifikasi password harus diisi.',
-                'password1_'.$data['id'].'.min' => 'Minimal password berjumlah 8 karakter.',
-                'password2_'.$data['id'].'.same' => 'Verifikasi password tidak sesuai.',
-            ];
+    //             'password1_'.$data['id'].'.required' => 'Password harus diisi.',
+    //             'password2_'.$data['id'].'.required' => 'Verifikasi password harus diisi.',
+    //             'password1_'.$data['id'].'.min' => 'Minimal password berjumlah 8 karakter.',
+    //             'password2_'.$data['id'].'.same' => 'Verifikasi password tidak sesuai.',
+    //         ];
     
-            $validator = Validator::make($data, [
-                'nama'.$data['id']          => 'required|max:50',
-                'email'.$data['id']         => 'required|unique:users,email,'.$data['email'.$data['id']].',email',
-                'password1_'.$data['id']    => 'required|min:8',
-                'password2_'.$data['id']    =>  'same:password1_'.$data['id'].'|required'
-            ], $messages);
+    //         $validator = Validator::make($data, [
+    //             'nama'.$data['id']          => 'required|max:50',
+    //             'email'.$data['id']         => 'required|unique:users,email,'.$data['email'.$data['id']].',email',
+    //             'password1_'.$data['id']    => 'required|min:8',
+    //             'password2_'.$data['id']    =>  'same:password1_'.$data['id'].'|required'
+    //         ], $messages);
        
-        }
+    //     }
         
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInput()->with('insert', 'failed');
-       } else{
-            $in =  $this->user->edit($request->all(), $with_password);
-            if($in){
-                return redirect()->back()->with('update', 'success');
-            } else{
-                return redirect()->back()->with('update', 'failed');
-            }
-       }
+    //     if($validator->fails()){
+    //         return redirect()->back()->withErrors($validator)->withInput()->with('insert', 'failed');
+    //    } else{
+    //         $in =  $this->user->edit($request->all(), $with_password);
+    //         if($in){
+    //             return redirect()->back()->with('update', 'success');
+    //         } else{
+    //             return redirect()->back()->with('update', 'failed');
+    //         }
+    //    }
 
 
     }

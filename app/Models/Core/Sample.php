@@ -24,7 +24,7 @@ class Sample extends Model
                     ->Join('kelompok', 'kelompok.id_kelompok', '=','sample.id_kelompok')
                     ->Join('pelatihan', 'pelatihan.id_pelatihan', '=','sample.id_pelatihan')
                     ->sortable()
-                    ->orderBy('nama', 'desc')
+                    ->orderBy('id', 'asc')
                 ->paginate(10);
 
         return $sample;
