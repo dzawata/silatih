@@ -138,7 +138,7 @@
                         <td>{{ $tenagakerjadata->kelompok }}</td>
                         <td>
                           <a class="btn btn-primary btn-xs " href="{{ route('tenagakerja.edit', $tenagakerjadata->id) }}"><i class="fa fa-user-edit"></i></a>
-                          <a class="btn btn-danger btn-xs " href="{{ route('tenagakerja.delete', $tenagakerjadata->id) }}" onclick="return confirm('Data dihapus?')"><i class="fas fa-trash"></i></a>
+                          <a class="btn btn-danger btn-xs " href="{{ route('tenagakerja.hapus', $tenagakerjadata->id) }}" onclick="return confirm('Data dihapus?')"><i class="fas fa-trash"></i></a>
 
                         </td>
                         </tr>

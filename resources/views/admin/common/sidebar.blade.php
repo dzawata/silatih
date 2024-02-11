@@ -80,12 +80,12 @@
             </a>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="{{ URL::to('probabilitas/display')}}" class="nav-link">
               <i class="fas fa-square-root-alt nav-icon"></i>             
               <p>Probabilitas</p>
             </a>
-          </li>
+          </li> -->
 
           <li class="nav-header">Data Testing </li>
         

@@ -140,7 +140,7 @@
                         <td>{{ $sampledata->jenis }}</td>
                         <td>
                           <a class="btn btn-primary btn-xs" href="{{ route('sample.edit', $sampledata->id) }}"><i class="fa fa-user-edit"></i></a>
-                          <a class="btn btn-danger btn-xs" href="{{ route('sample.delete', $sampledata->id) }}" onclick="return confirm('Data akan dihapus?')"><i class="fas fa-trash"></i></a>
+                          <a class="btn btn-danger btn-xs" href="{{ route('sample.hapus', $sampledata->id) }}" onclick="return confirm('Data akan dihapus?')"><i class="fas fa-trash"></i></a>
 
                         </td>
                         </tr>

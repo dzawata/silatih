@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth:sanctum', 'cekrole:1|2']], function () {
         Route::post('/add', 'SampleController@add')->name('sample.add');
         Route::get('/edit/{id}', 'SampleController@edit')->name('sample.edit');
         Route::post('/update', 'SampleController@update')->name('sample.update');
-        Route::get('/delete/{id}', 'SampleController@delete')->name('sample.delete');
+        Route::get('/delete/{id}', 'SampleController@delete')->name('sample.hapus');
     });
 
 
@@ -112,7 +112,7 @@ Route::group(['middleware' => ['auth:sanctum', 'cekrole:1|2']], function () {
         Route::post('/add', 'TenagakerjaController@add')->name('tenagakerja.add');
         Route::get('/edit/{id}', 'TenagakerjaController@edit')->name('tenagakerja.edit');
         Route::post('/update', 'TenagakerjaController@update')->name('tenagakerja.update');
-        Route::get('/delete/{id}', 'TenagakerjaController@delete')->name('tenagakerja.delete');
+        Route::get('/delete/{id}', 'TenagakerjaController@delete')->name('tenagakerja.hapus');
     });
 
     Route::group(['prefix' => 'rekomendasi', 'middleware' => ['auth:sanctum', 'cekrole:1']], function () {

@@ -54,78 +54,9 @@ class RekomendasiController extends Controller
         return view('admin.rekomendasi.detail')->with('result', $result)->with('datarekomendasi', $datarekomendasi);
     }
 
-    // public function proses(Request $request)
-    // {   
-    //     $proses = true;
-    //     if($proses){
-    //         $sql = DB::table('probabilitas')->select('kolom','data')->get();
-    //         foreach ($sql as $hsl )
-    //         $data[$hsl->kolom] = json_decode($hsl->data);
-    //         foreach($data as $p => $q) foreach($q->ITEM as $k => $v) $ovale[$p][$v] = $q->NILAI[$k];
-    //         $mhs = DB::table('view_tenagakerja')->get();
-    //         foreach ($mhs as $row) {
-    //             $beasiswa = end($data)->PELATIHAN;
-    //             foreach($beasiswa as $key =>$val){
-    //                 foreach($data as $p => $q){
-    //                     $hasil[$p][$val]['VAL'] = (array_key_exists($row->$p, $ovale[$p]))?$ovale[$p][$row->$p][$key-1]:0;
-    //                         $hasil[$p][$val]['TOTAL'] = $q->TOTAL[$key-1];
-    //                         $hasil[$p][$val]['NILAI'] = $hasil[$p][$val]['VAL'] / $q->TOTAL[$key-1];
-    //             }
-    //         }
-    //         foreach($beasiswa as $key =>$val){
-    //             $ping = null;
-    //             foreach($data as $p => $q){
-    //                 $ping[$val][] = $hasil[$p][$val]['NILAI'];
-    //             }
-    //             $hasil['LIKELIHOOD'][$val] = array_product($ping[$val]);
-    //         }
-    //         foreach($beasiswa as $key =>$val){
-    //             $hasil['PROBABILITY'][$val]['TOTAL'] = array_sum($hasil['LIKELIHOOD']);
-    //             if(end($beasiswa)==$val):
-    //                 $hasil['PROBABILITY']['TIDAK']['TOTAL'] = array_sum($hasil['LIKELIHOOD']);
-    //             endif;
-
-    //             if(array_sum($hasil['LIKELIHOOD'])>0):
-    //                 $hasil['PROBABILITY'][$val]['NILAI'] = $hasil['LIKELIHOOD'][$val] / $hasil['PROBABILITY'][$val]['TOTAL'];
-    //                 if(end($beasiswa)==$val):
-    //                     $hasil['PROBABILITY']['TIDAK']['NILAI'] = $hasil['LIKELIHOOD']['TIDAK'] / $hasil['PROBABILITY']['TIDAK']['TOTAL'];
-    //                 endif;
-    //             else:
-    //                 $hasil['PROBABILITY'][$val]['NILAI'] = 0;
-    //                 if(end($beasiswa)==$val):
-    //                     $hasil['PROBABILITY']['TIDAK']['NILAI'] = 0;
-    //                 endif;
-    //             endif;
-    //         }
-
-
-    //         if(max($hasil['LIKELIHOOD'])>0)
-    //             $hasil['REKOMENDASI'] = array_search(max($hasil['LIKELIHOOD']), $hasil['LIKELIHOOD']);
-    //         else
-    //             $hasil['REKOMENDASI'] = "UNKNOWN";
-
-    //             //$result[$row->NIM] = $hasil;
-    //             $rets = json_encode($hasil);
-    //             $query = DB::table('rekomendasi')->where('nik', '=', $row->nik);
-
-    //             if( $query->count() == 0)
-    //             {
-    //                 DB::table('rekomendasi')
-    //                 ->insert(['nik' => $row->nik, 'DATA' => $rets, 'REKOMENDASI' =>$hasil['REKOMENDASI']]);
-    //                 return redirect()->back()->with('delete', 'success');
-    //             }
-    //             else 
-    //             {
-    //             DB::table('rekomendasi')
-    //             ->update(['DATA' => $rets, 'REKOMENDASI'=>$hasil['REKOMENDASI']]);
-    //             return redirect()->back()->with('delete', 'success');
-    //             }
-    //         }
-    //     }
-    // }
-
     public function proses(Request $request)
     {
+        // start training
         $sample = DB::table('sample')
             ->select([
                 'sample.nama',
@@ -192,6 +123,11 @@ class RekomendasiController extends Controller
             }
         }
 
+        // end training
+        // dd($probabilitas);
+
+
+        // start testing
         $testing = DB::table('view_tenagakerja')
             ->select([
                 'nik',
@@ -261,6 +197,9 @@ class RekomendasiController extends Controller
                     ]);
             }
         }
+
+        // end testing
+        
         return redirect()->back()->with('delete', 'success');
     }
 }
