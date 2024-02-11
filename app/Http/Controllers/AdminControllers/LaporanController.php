@@ -45,7 +45,7 @@ class LaporanController extends Controller
                     'C.jurusan',
                     'D.kelompok'
                 )
-                ->leftjoin('tenagakerja as G', function ($join) {
+                ->join('tenagakerja as G', function ($join) {
                     $join->on('A.nik', '=', 'G.nik');
                 })
                 ->leftjoin('tingkat as B', function ($join) {
@@ -76,7 +76,7 @@ class LaporanController extends Controller
                     'C.jurusan',
                     'D.kelompok'
                 )
-                ->leftjoin('tenagakerja as G', function ($join) {
+                ->join('tenagakerja as G', function ($join) {
                     $join->on('A.nik', '=', 'G.nik');
                 })
                 ->leftjoin('tingkat as B', function ($join) {
