@@ -13,6 +13,8 @@ use PDF;
 
 class RekomendasiController extends Controller
 {
+    public $rekomendasi;
+
     function __construct(rekomendasi $rekomendasi)
     {
         $this->middleware('auth');
@@ -27,8 +29,8 @@ class RekomendasiController extends Controller
         $result['jurusan_data'] = $this->rekomendasi->alljurusan();
         $result['kelompok_data'] = $this->rekomendasi->allkelompok();
 
-        if(isset($request->page)){
-            $result['i'] = (($request->page - 1) * 10)+1;
+        if (isset($request->page)) {
+            $result['i'] = (($request->page - 1) * 10) + 1;
         } else {
             $result['i'] = 1;
         }
@@ -44,9 +46,9 @@ class RekomendasiController extends Controller
         $result['jurusan_data'] = $this->rekomendasi->alljurusan();
         $result['kelompok_data'] = $this->rekomendasi->allkelompok();
         $result['jurusan'] = $this->rekomendasi->jurusan();
-        
+
         $result['rekomendasi'] = $this->rekomendasi->rekomendasi();
-        
+
         $datarekomendasi = $this->rekomendasi->getrekomendasi($request->id);
 
         return view('admin.rekomendasi.detail')->with('result', $result)->with('datarekomendasi', $datarekomendasi);
@@ -95,7 +97,7 @@ class RekomendasiController extends Controller
     //                 endif;
     //             endif;
     //         }
-            
+
 
     //         if(max($hasil['LIKELIHOOD'])>0)
     //             $hasil['REKOMENDASI'] = array_search(max($hasil['LIKELIHOOD']), $hasil['LIKELIHOOD']);
@@ -105,7 +107,7 @@ class RekomendasiController extends Controller
     //             //$result[$row->NIM] = $hasil;
     //             $rets = json_encode($hasil);
     //             $query = DB::table('rekomendasi')->where('nik', '=', $row->nik);
-                
+
     //             if( $query->count() == 0)
     //             {
     //                 DB::table('rekomendasi')
@@ -124,128 +126,141 @@ class RekomendasiController extends Controller
 
     public function proses(Request $request)
     {
-        $sample = DB::table('sample')->select([
-            'sample.jenis_kelamin', 
-            'jenis.jenis', 
-            'jurusan.jurusan', 
-            'kelompok.kelompok', 
-            'tingkat.tingkat', 
-            'pelatihan.pelatihan'
-        ])
-            ->join('jenis', 'jenis.id_jenis', 'sample.id_jenis')
+        $sample = DB::table('sample')
+            ->select([
+                'sample.nama',
+                DB::raw('lower(sample.jenis_kelamin) jenis_kelamin'),
+                DB::raw('lower(jurusan.jurusan) jurusan'),
+                DB::raw('lower(tingkat.tingkat) tingkat'),
+                DB::raw('lower(kelompok.kelompok) kelompok'),
+                DB::raw('lower(pelatihan.pelatihan) pelatihan'),
+                DB::raw('lower(jenis.jenis) jenis'),
+            ])
             ->join('jurusan', 'jurusan.id_jurusan', 'sample.id_jurusan')
-            ->join('kelompok', 'kelompok.id_kelompok', 'sample.id_kelompok')
             ->join('tingkat', 'tingkat.id_tingkat', 'sample.id_tingkat')
+            ->join('kelompok', 'kelompok.id_kelompok', 'sample.id_kelompok')
             ->join('pelatihan', 'pelatihan.id_pelatihan', 'sample.id_pelatihan')
+            ->join('jenis', 'jenis.id_jenis', 'sample.id_jenis')
+            ->orderBy('id')
             ->get();
-        
+
         $pelatihan = DB::table('pelatihan')->get();
 
         $probabilitas = [
-            'pelatihan' => [],
-            'kategori' => []
+            'kelas' => [],
+            'kriteria' => []
         ];
-        foreach($sample as $contoh){
-            foreach($pelatihan as $latih){
-                if($latih->pelatihan == $contoh->pelatihan){
-                    if(empty($probabilitas['pelatihan'][$latih->pelatihan])){
-                        $probabilitas['pelatihan'][$latih->pelatihan]=[
-                            'xkemunculan' => 0,
-                            'nilai_prob' => 0
-                        ];
-                    }
-                    $probabilitas['pelatihan'][$latih->pelatihan]['xkemunculan']++;
-                }
-            }
-
-            if(empty($probabilitas['kategori']['jenis_kelamin'][$contoh->jenis_kelamin])){
-                    $probabilitas['kategori']['jenis_kelamin'][$contoh->jenis_kelamin]=[
+        foreach ($sample as $key => $vsample) {
+            foreach ($pelatihan as $key => $vpelatihan) {
+                if (empty($probabilitas['kelas'][strtolower($vpelatihan->pelatihan)])) {
+                    $probabilitas['kelas'][strtolower($vpelatihan->pelatihan)] = [
                         'xkemunculan' => 0,
-                        'nilai_prob' => 0
+                        'nilai_prob' => 0,
                     ];
-            }
-
-            if(array_key_exists($contoh->jenis_kelamin, $probabilitas['kategori']['jenis_kelamin'])){
-                // perlu dibuat dinamis
-                switch ($contoh->jenis_kelamin) {
-                    case 'P':
-                    case 'L':
-                        $probabilitas['kategori']['jenis_kelamin'][$contoh->jenis_kelamin]['xkemunculan']++;
-                        break;
                 }
-            }
 
-            if(empty($probabilitas['kategori']['tingkat'][$contoh->tingkat])){
-                $probabilitas['kategori']['tingkat'][$contoh->tingkat]=[
-                    'xkemunculan' => 0,
-                    'nilai_prob' => 0
-                ];
-            }
-
-            if(array_key_exists($contoh->tingkat, $probabilitas['kategori']['tingkat'])){
-                // perlu dibuat dinamis
-                switch ($contoh->tingkat) {
-                    case 'SMP atau Sederajat':
-                    case 'SMA atau Sederajat':
-                    case 'SMK':
-                    case 'S1':
-                        $probabilitas['kategori']['tingkat'][$contoh->tingkat]['xkemunculan']++;
-                        break;
-                }
-            }
-
-            if(empty($probabilitas['kategori']['jurusan'][$contoh->jurusan])){
-                $probabilitas['kategori']['jurusan'][$contoh->jurusan]=[
-                    'xkemunculan' => 0,
-                    'nilai_prob' => 0
-                ];
-            }
-
-            if(array_key_exists($contoh->jurusan, $probabilitas['kategori']['jurusan'])){
-                // perlu dibuat dinamis
-                switch ($contoh->jurusan) {
-                    case 'TATA BOGA':
-                    case 'TEKNIK OTOMOTIF':
-                    case 'PERHOTELAN':
-                    case 'IPA/IPS':
-                    case 'MANAJEMEN SDM':
-                    case 'UMUM':
-                        $probabilitas['kategori']['jurusan'][$contoh->jurusan]['xkemunculan']++;
-                        break;
-                }
-            }
-
-            if(empty($probabilitas['kategori']['kelompok'][$contoh->kelompok])){
-                $probabilitas['kategori']['kelompok'][$contoh->kelompok]=[
-                    'xkemunculan' => 0,
-                    'nilai_prob' => 0
-                ];
-            }
-
-            if(array_key_exists($contoh->kelompok, $probabilitas['kategori']['kelompok'])){
-                // perlu dibuat dinamis
-                switch ($contoh->kelompok) {
-                    case 'PENCARI KERJA':
-                    case 'BEKERJA':
-                    case 'BURUH TANI TEMBAKAU':
-                    case 'KELOMPOK MASYARAKAT':
-                        $probabilitas['kategori']['kelompok'][$contoh->kelompok]['xkemunculan']++;
-                        break;
+                if ($vsample->pelatihan == strtolower($vpelatihan->pelatihan)) {
+                    $probabilitas['kelas'][strtolower($vpelatihan->pelatihan)]['xkemunculan']++;
                 }
             }
         }
 
-        foreach ($probabilitas['pelatihan'] as $key => $value_prob) {
-            $probabilitas['pelatihan'][$key]['nilai_prob'] = $value_prob['xkemunculan'] / count($sample);
+        foreach ($probabilitas['kelas'] as $key => $prob) {
+            $probabilitas['kelas'][$key]['nilai_prob'] = $prob['xkemunculan'] / count($sample);
         }
 
-        foreach ($probabilitas['kategori'] as $key0 => $value_kategori) {
-            foreach ($value_kategori as $key1 => $value) {
-                $probabilitas['kategori'][$key0][$key1]['nilai_prob'] = $probabilitas['kategori'][$key0][$key1]['xkemunculan'] / count($sample);
+        $xkriteria = DB::table('x')
+            ->orderBy('x')
+            ->get();
+
+        foreach ($xkriteria as $key1 => $kriteria) {
+            foreach ($pelatihan as $key2 => $vpelatihan) {
+                if (empty($probabilitas['kriteria'][strtolower($kriteria->x)][strtolower($kriteria->value)][strtolower($vpelatihan->pelatihan)])) {
+
+                    $jumlah = count($sample
+                        ->where(strtolower($kriteria->x), strtolower($kriteria->value))
+                        ->where('pelatihan', strtolower($vpelatihan->pelatihan)));
+
+                    $total = count($sample
+                        ->where('pelatihan', strtolower($vpelatihan->pelatihan)));
+
+                    $probabilitas['kriteria'][strtolower($kriteria->x)][strtolower($kriteria->value)][strtolower($vpelatihan->pelatihan)] = [
+                        'xkemunculan' => $jumlah,
+                        'nilai_prob' => $jumlah / $total,
+                    ];
+                }
             }
         }
 
-            
-        dd($probabilitas);
+        $testing = DB::table('view_tenagakerja')
+            ->select([
+                'nik',
+                'nama',
+                'email',
+                'alamat',
+                'hp',
+                DB::raw('lower(KELAMIN) jenis_kelamin'),
+                DB::raw('lower(JURUSAN) jurusan'),
+                DB::raw('lower(STATUS) kelompok'),
+                DB::raw('lower(PENDIDIKAN) tingkat'),
+            ])
+            ->orderBy('id')
+            ->get();
+
+        $xkriteria = $xkriteria->unique('x');
+
+        $hasil = [];
+        foreach ($testing as $key0 => $test) {
+            foreach ($pelatihan as $key1 => $vpelatihan) {
+                $hasil[$test->nik][$vpelatihan->pelatihan][] = $probabilitas['kelas'][strtolower($vpelatihan->pelatihan)]['nilai_prob'];
+                foreach ($xkriteria as $key2 => $kriteria) {
+                    switch ($kriteria->x) {
+                        case 'jenis_kelamin':
+                            $hasil[$test->nik][$vpelatihan->pelatihan][] = $probabilitas['kriteria'][$kriteria->x][strtolower($test->jenis_kelamin)][strtolower($vpelatihan->pelatihan)]['nilai_prob'];
+                            break;
+
+                        case 'jurusan':
+                            $hasil[$test->nik][$vpelatihan->pelatihan][] = $probabilitas['kriteria'][$kriteria->x][strtolower($test->jurusan)][strtolower($vpelatihan->pelatihan)]['nilai_prob'];
+                            break;
+
+                        case 'kelompok':
+                            $hasil[$test->nik][$vpelatihan->pelatihan][] = $probabilitas['kriteria'][$kriteria->x][strtolower($test->kelompok)][strtolower($vpelatihan->pelatihan)]['nilai_prob'];
+                            break;
+
+                        case 'tingkat':
+                            $hasil[$test->nik][$vpelatihan->pelatihan][] = $probabilitas['kriteria'][$kriteria->x][strtolower($test->tingkat)][strtolower($vpelatihan->pelatihan)]['nilai_prob'];
+                            break;
+                    }
+                }
+            }
+        }
+
+        $total = [];
+        foreach ($hasil as $key => $value) {
+            foreach ($value as $key1 => $val) {
+                $total[$key1] = array_product($val);
+            }
+
+            $rekomendasi = array_search(max($total), $total);
+
+            $query = DB::table('rekomendasi')->where('nik', '=', $key);
+            if ($query->count() == 0) {
+                DB::table('rekomendasi')
+                    ->insert([
+                        'nik' => $key,
+                        'data' => json_encode($total),
+                        'REKOMENDASI' => $rekomendasi
+
+                    ]);
+            } else {
+                DB::table('rekomendasi')
+                    ->where('nik', '=', $key)
+                    ->update([
+                        'data' => json_encode($total),
+                        'REKOMENDASI' => $rekomendasi
+                    ]);
+            }
+        }
+        return redirect()->back()->with('delete', 'success');
     }
 }

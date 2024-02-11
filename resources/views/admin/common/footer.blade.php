@@ -11,10 +11,10 @@
         <p>Anda yakin ingin keluar?</p>
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Tidak</button>
-          <input type="submit" class="btn btn-danger" value="Yakin">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Tidak</button>
+        <input type="submit" class="btn btn-danger" value="Yakin">
         </form>
       </div>
     </div>

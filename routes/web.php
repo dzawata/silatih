@@ -93,10 +93,11 @@ Route::group(['middleware' => ['auth:sanctum', 'cekrole:1|2']], function () {
 
     Route::group(['prefix' => 'sample', 'middleware' => ['auth:sanctum', 'cekrole:1']], function () {
 
-        Route::get('/display', 'SampleController@display');
+        Route::get('/display', 'SampleController@display')->name('sample.display');
         Route::post('/add', 'SampleController@add')->name('sample.add');
-        Route::post('/edit', 'SampleController@edit')->name('sample.edit');
-        Route::post('/hapus', 'SampleController@hapus')->name('sample.hapus');
+        Route::get('/edit/{id}', 'SampleController@edit')->name('sample.edit');
+        Route::post('/update', 'SampleController@update')->name('sample.update');
+        Route::get('/delete/{id}', 'SampleController@delete')->name('sample.delete');
     });
 
 
@@ -107,8 +108,11 @@ Route::group(['middleware' => ['auth:sanctum', 'cekrole:1|2']], function () {
 
     Route::group(['prefix' => 'tenagakerja', 'middleware' => ['auth:sanctum', 'cekrole:1']], function () {
 
-        Route::get('/display', 'TenagakerjaController@display');
+        Route::get('/display', 'TenagakerjaController@display')->name('tenagakerja.display');
         Route::post('/add', 'TenagakerjaController@add')->name('tenagakerja.add');
+        Route::get('/edit/{id}', 'TenagakerjaController@edit')->name('tenagakerja.edit');
+        Route::post('/update', 'TenagakerjaController@update')->name('tenagakerja.update');
+        Route::get('/delete/{id}', 'TenagakerjaController@delete')->name('tenagakerja.delete');
     });
 
     Route::group(['prefix' => 'rekomendasi', 'middleware' => ['auth:sanctum', 'cekrole:1']], function () {
@@ -121,9 +125,5 @@ Route::group(['middleware' => ['auth:sanctum', 'cekrole:1|2']], function () {
     Route::prefix('/laporan')->group(function () {
         Route::get('/display', 'LaporanController@display');
         Route::post('/rekomendasi', 'LaporanController@rekomendasi')->name('laporan.rekomendasi');
-    });  
-
-
+    });
 });
-
-

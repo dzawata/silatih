@@ -11,11 +11,11 @@ class Tenagakerja extends Model
 {
     use HasFactory;
     use Sortable;
-    
+
     protected $table = 'tenagakerja';
 
-	public $sortable = ['tenagakerja'];
-    protected $fillable = [ 'tenagakerja'];
+    public $sortable = ['tenagakerja'];
+    protected $fillable = ['tenagakerja'];
 
     public function tenagakerja_display(){
                     $tenagakerja = $this
@@ -56,33 +56,33 @@ class Tenagakerja extends Model
 
     public function insert($data)
     {
-        $nik       = ucfirst($data['nik']);
-        $nama       = ucfirst($data['nama']);
-        $email      = strtolower($data['email']);
-        $kelamin      = strtolower($data['kelamin']);
-        $alamat      = strtolower($data['alamat']);
+        $nik       = $data['nik'];
+        $nama      = strtoupper($data['nama']);
+        $email     = strtolower($data['email']);
+        $kelamin   = $data['kelamin'];
+        $alamat    = strtolower($data['alamat']);
 
-        $in =    DB::table('tenagakerja')->insert([
-                    'nik'          => $nik,
-                    'nama'          => $nama,
-                    'jenis_kelamin'          => $kelamin,
-                    'email'         => $email,
-                    'alamat'         => $alamat,
-                    'hp'         => $data['hp'],
-                    'id_tingkat'          => $data['tingkat'],
-                    'id_jurusan'          => $data['jurusan'],
-                    'id_kelompok'          => $data['kelompok']
-                ]);
-        return $in;        
+        $in = DB::table('tenagakerja')->insert([
+            'nik'           => $nik,
+            'nama'          => $nama,
+            'jenis_kelamin' => $kelamin,
+            'email'         => $email,
+            'alamat'        => $alamat,
+            'hp'            => $data['hp'],
+            'id_tingkat'    => $data['tingkat'],
+            'id_jurusan'    => $data['jurusan'],
+            'id_kelompok'   => $data['kelompok']
+        ]);
+        return $in;
     }
 
     public function edit($data, $with_password)
     {
-        $name       = ucfirst($data['nama'.$data['id']]);
-        $email      = strtolower($data['email'.$data['id']]);
+        $name       = ucfirst($data['nama' . $data['id']]);
+        $email      = strtolower($data['email' . $data['id']]);
         $created    = date('Y-m-d H:i:s');
 
-        if($with_password){
+        if ($with_password) {
             $update_data = [
                 'name' => $name,
                 'email' => $email,
@@ -92,7 +92,7 @@ class Tenagakerja extends Model
             $update_data = [
                 'name' => $name,
                 'email' => $email,
-                'password' => password_hash($data['password1_'.$data['id']], PASSWORD_DEFAULT),
+                'password' => password_hash($data['password1_' . $data['id']], PASSWORD_DEFAULT),
                 'created_at' => $created
             ];
         }
@@ -112,43 +112,43 @@ class Tenagakerja extends Model
     public function operator_add($data)
     {
         $in = DB::table('users')->insert([
-                'name' => $data['nama'],
-                'role'  => '3',
-                'email' => $data['email'],
-                'telp' => $data['telp'],
-                'opd'   => $data['opd'],
-                'password' => password_hash($data['password'], PASSWORD_DEFAULT),
-                'created_at' => date('Y-m-d H:i:s'),
+            'name' => $data['nama'],
+            'role'  => '3',
+            'email' => $data['email'],
+            'telp' => $data['telp'],
+            'opd'   => $data['opd'],
+            'password' => password_hash($data['password'], PASSWORD_DEFAULT),
+            'created_at' => date('Y-m-d H:i:s'),
         ]);
-        
+
         return $in;
     }
 
     public function edit_operator($data)
     {
         $id = $data['id'];
-        
-        
-        if($data['verifikasi_ed'.$id] == 1){
+
+
+        if ($data['verifikasi_ed' . $id] == 1) {
             $very = date('Y-m-d H:i:s');
         } else {
             $very = null;
         }
-       
-        if($data['password_ed'.$id] == NULL){
+
+        if ($data['password_ed' . $id] == NULL) {
             $in = DB::table('users')->where('id', $id)->update([
-                'name'  => $data['nama_ed'.$id],
-                'email' => $data['email_ed'.$id],
-                'telp'  => $data['telp_ed'.$id],
+                'name'  => $data['nama_ed' . $id],
+                'email' => $data['email_ed' . $id],
+                'telp'  => $data['telp_ed' . $id],
                 'email_verified_at' => $very
             ]);
         } else {
             $in = DB::table('users')->where('id', $id)->update([
-                'name'  => $data['nama_ed'.$id],
-                'email' => $data['email_ed'.$id],
-                'telp'  => $data['telp_ed'.$id],
+                'name'  => $data['nama_ed' . $id],
+                'email' => $data['email_ed' . $id],
+                'telp'  => $data['telp_ed' . $id],
                 'email_verified_at' => $very,
-                'password' => password_hash($data['password_ed'.$id], PASSWORD_DEFAULT)
+                'password' => password_hash($data['password_ed' . $id], PASSWORD_DEFAULT)
             ]);
         }
 
