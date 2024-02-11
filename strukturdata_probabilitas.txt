@@ -1,0 +1,429 @@
+array:2 [▼
+  "kelas" => array:6 [▶]
+  "kriteria" => array:4 [▼
+    "jenis_kelamin" => array:2 [▼
+      "l" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 10
+          "nilai_prob" => 1
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.25
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 6
+          "nilai_prob" => 1
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+      ]
+      "p" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 19
+          "nilai_prob" => 1
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 3
+          "nilai_prob" => 0.75
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 4
+          "nilai_prob" => 1
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 7
+          "nilai_prob" => 1
+        ]
+      ]
+    ]
+    "jurusan" => array:6 [▼
+      "umum" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 2
+          "nilai_prob" => 0.5
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+      ]
+      "ipa/ips" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 6
+          "nilai_prob" => 1
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.14285714285714
+        ]
+      ]
+      "tata boga" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 4
+          "nilai_prob" => 1
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+      ]
+      "perhotelan" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 19
+          "nilai_prob" => 1
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.25
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+      ]
+      "manajemen sdm" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.25
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 6
+          "nilai_prob" => 0.85714285714286
+        ]
+      ]
+      "teknik otomotif" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 10
+          "nilai_prob" => 1
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+      ]
+    ]
+    "kelompok" => array:4 [▼
+      "bekerja" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 2
+          "nilai_prob" => 0.2
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.25
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.25
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+      ]
+      "pencari kerja" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 7
+          "nilai_prob" => 0.36842105263158
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 7
+          "nilai_prob" => 0.7
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 3
+          "nilai_prob" => 0.75
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 3
+          "nilai_prob" => 0.75
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 5
+          "nilai_prob" => 0.83333333333333
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.14285714285714
+        ]
+      ]
+      "buruh tani tembakau" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.052631578947368
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.16666666666667
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+      ]
+      "kelompok masyarakat" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 11
+          "nilai_prob" => 0.57894736842105
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.1
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 6
+          "nilai_prob" => 0.85714285714286
+        ]
+      ]
+    ]
+    "tingkat" => array:4 [▼
+      "s1" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.25
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 6
+          "nilai_prob" => 0.85714285714286
+        ]
+      ]
+      "smk" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 19
+          "nilai_prob" => 1
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 10
+          "nilai_prob" => 1
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.25
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 4
+          "nilai_prob" => 1
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+      ]
+      "sma atau sederajat" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 6
+          "nilai_prob" => 1
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 1
+          "nilai_prob" => 0.14285714285714
+        ]
+      ]
+      "smp atau sederajat" => array:6 [▼
+        "bahasa jepang" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "otomotif roda dua" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "menjahit" => array:2 [▼
+          "xkemunculan" => 2
+          "nilai_prob" => 0.5
+        ]
+        "processing" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "teknik pengelasan" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+        "kerajinan tas plastik" => array:2 [▼
+          "xkemunculan" => 0
+          "nilai_prob" => 0
+        ]
+      ]
+    ]
+  ]
+]
