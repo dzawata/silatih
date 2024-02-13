@@ -138,7 +138,7 @@
                         <div class="icon">
                           <i class="fas fa-chalkboard-teacher"></i>
                         </div>
-                        <a href="{{URL::to('pelatihans/display')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{URL::to('pelatihan/display')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                     
@@ -170,7 +170,7 @@
                         <div class="icon">
                           <i class="fas fa-database"></i>
                         </div>
-                        <a href="{{URL::to('sample/display')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{URL::to('rekomendasi/display')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                    
